@@ -1,0 +1,42 @@
+<%= form_with(model: composition, local: true) do |form| %>
+  <% if composition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(composition.errors.count, "error") %> prohibited this composition from being saved:</h2>
+
+      <ul>
+      <% composition.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name, id: :composition_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :composition_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dimension %>
+    <%= form.text_area :dimension, id: :composition_dimension %>
+  </div>
+
+  <div class="field">
+    <%= form.label :materials %>
+    <%= form.text_area :materials, id: :composition_materials %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_area :image, id: :composition_image %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,29 +1,17 @@
-version: '2'
-services:
-  mysql:
-    image: mysql:8
-    ports:
-      - "3306:3306"
-    volumes:
-      - 'dbdata:/var/lib/mysql'
-    environment:
+web:
+  build: .
+  volumes:
+    - .:/myapp
+  ports:
+    - "3000:3000"
+  links:
+    - db
+  env_file:
+    - '.env.web'
+db:
+  image: library/mysql:8
+  ports:
+    - "13306:3306"
+  environment:
       - MYSQL_ROOT_PASSWORD=root
-  app:
-    build: .
-    command: ./.entrypoint.sh
-    volumes:
-      - .:/nex-seat
-    volumes_from:
-      - bundle
-    ports:
-      - "3000:3000"
-    links:
-      - 'mysql'
-  bundle:
-    image: busybox
-    volumes:
-      - bundle:/bundle
-volumes:
-  dbdata:
-  bundle:
 

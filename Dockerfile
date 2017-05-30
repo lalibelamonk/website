@@ -1,17 +1,15 @@
 FROM ruby:2.4.1
+RUN apt-get update -qq && apt-get install -y build-essential nodejs npm nodejs-legacy mysql-client vim
+RUN npm install -g phantomjs
 
-MAINTAINER Neal Joho
+RUN mkdir /myapp
 
-RUN mkdir /app && apt-get update -qq \
- && apt-get install -y nodejs cowsay build-essential libpq-dev vim mysql-client
+WORKDIR /tmp
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install
 
-EXPOSE 80 8080
-
-ENV BUNDLE_JOBS=4 \
-    BUNDLE_PATH=/bundle \
-    PATH=$PATH:/usr/games/
-WORKDIR /app
-
-ADD . /app
-
-CMD ['foreman', 'start']
+ADD . /myapp
+WORKDIR /myapp
+RUN RAILS_ENV=production bundle exec rake assets:precompile --trace
+CMD ["rails","server","-b","0.0.0.0"]

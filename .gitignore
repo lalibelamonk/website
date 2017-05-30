@@ -23,3 +23,5 @@
 .byebug_history
 config/database\.yml
 client/node_modules/
+.env.db
+.env.web

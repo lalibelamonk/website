@@ -1,17 +1,34 @@
-web:
-  build: .
-  volumes:
-    - .:/myapp
-  ports:
-    - "3000:3000"
-  links:
-    - db
-  env_file:
-    - '.env.web'
-db:
-  image: library/mysql:8
-  ports:
-    - "13306:3306"
-  environment:
+version: '2'
+services:
+  mysql:
+    image: mysql:8
+    ports:
+      - "3306:3306"
+    environment:
       - MYSQL_ROOT_PASSWORD=root
-
+  app:
+    build: .
+    command: ['bin/rails', 'server', '-p', '3000', '-b', '0.0.0.0']
+    volumes:
+      - .:/website
+    volumes_from:
+      - bundle
+    ports:
+      - "3000:3000"
+    links:
+      - 'mysql'
+  client:
+    build: ./client
+    command: npm start
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./client:/client
+    depends_on:
+      - 'app'
+  bundle:
+    image: busybox
+    volumes:
+      - bundle:/bundle
+volumes:
+  bundle:

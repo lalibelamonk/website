@@ -2,6 +2,8 @@ version: '2'
 services:
   mysql:
     image: mysql:8
+    volumes:
+      - './database:/var/lib/mysql'
     ports:
       - "3306:3306"
     environment:

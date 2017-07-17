@@ -1,12 +1,12 @@
 //components for routes
-// import compositions from 'path/to/compositions';
+import dashboard from '../components/dashboard/dashboard'
 
 export const routes = [
     {
-       path: '/compositions',
+       path: '*',
         exact: true,
-        private: true,
-        component: Test,
+        private: false,
+        component: dashboard,
         label: 'Dashboard'
     }
 ]

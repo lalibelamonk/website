@@ -1,4 +1,4 @@
 /**
  * Action identifying names
 **/
-export const TST_ACTION = 'TST_ACTION';
+export const GET_COMPOSITIONS = 'GET_COMPOSITIONS';

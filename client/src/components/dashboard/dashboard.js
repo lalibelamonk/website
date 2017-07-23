@@ -1,7 +1,3 @@
-/**
- * Created by Nick on 5/10/17.
- * cannot test as needs app for store to context
- */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './dashboard.css';

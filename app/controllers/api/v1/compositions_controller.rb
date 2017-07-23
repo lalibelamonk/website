@@ -5,7 +5,12 @@ module Api::V1
     # GET /compositions
     # GET /compositions.json
     def index
-      @compositions = Composition.all
+      @compositions = []
+      # dummy data for now
+      (1..10).each do |num|
+        comp = Composition.new(:name => "test #{num}", :image => "http://samanthaannsportfolio.weebly.com/uploads/1/0/4/9/10497850/9222152_orig.jpg")
+        @compositions.push(comp)
+      end
     end
 
     # GET /compositions/1

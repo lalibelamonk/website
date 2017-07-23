@@ -6,6 +6,7 @@ import configureStore from '../store/store';
 import {routes} from '../routes/routes';
 import { history } from '../history/history';
 import { ConnectedRouter } from 'react-router-redux';
+import Header from '../components/header/header';
 
 import './App.css';
 
@@ -23,10 +24,9 @@ const App = (props) => (
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <div className="App">
+                <Header />
                 <div className="main-container">
                     {routes.map((route, idx) => {
-                        console.log(route);
-                        console.log(idx);
                         if(route.private) {
                             return <PrivateRoute key={idx} {...route}/>
                         }

@@ -27,3 +27,5 @@ client/node_modules/
 .env.web
 
 /database
+database/*
+/database/**/*

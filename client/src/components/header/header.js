@@ -12,7 +12,7 @@ class Header extends Component {
     }
 
     loadCompositions() {
-        compositionsActions.getCompositions();
+        this.props.actions.getCompositions();
     }
 
     render() {

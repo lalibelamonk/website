@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Composition from '../composition/composition.js';
 import './dashboard.css';
 
 class Dashboard extends Component {
@@ -9,14 +10,28 @@ class Dashboard extends Component {
 
 
     render() {
-        console.log('rendered');
-        return (
-            <div>HELLO ROSESMELL</div>
-        );
+        if(this.props.compositions) {
+            return (
+                <div>
+                    <div>HELLO ROSESMELL</div>
+                    (this.props.compositions){ this.props.compositions.map(comp =>
+                        <Composition composition={comp} />
+                    )}
+                </div>
+            );
+        } else {
+            return <div>No Compositions</div>;
+        }
     }
 }
 
-export default connect(null, null)(Dashboard);
+function mapStateToProps(state, ownProps) {
+    return {
+        compositions: state.compositions
+    };
+}
+
+export default connect(mapStateToProps, null)(Dashboard);
 
 
 

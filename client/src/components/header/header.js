@@ -18,7 +18,7 @@ class Header extends Component {
     render() {
         return (
             <div className="header">
-                Rosesmell Studios
+                Print Witch
             </div>
         );
     }

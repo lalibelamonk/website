@@ -7,11 +7,17 @@ import './composition.css';
 class Composition extends Component {
     constructor(props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(e) {
+        e.preventDefault();
+        this.props.updateModalComp(this.props.composition);
     }
 
     render() {
         return (
-            <Card>
+            <Card onClick={this.handleClick}>
                 <CardImg top width="100%" src={this.props.composition.image} />
                 <CardBlock>
                     <CardTitle>{this.props.composition.name}</CardTitle>

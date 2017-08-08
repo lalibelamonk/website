@@ -1,6 +1,9 @@
 .main-container {
     position: relative;
-    top: 50px;
-    width: 80%;
+    width: 75%;
     margin: auto;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
 }

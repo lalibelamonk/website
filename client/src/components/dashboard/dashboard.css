@@ -6,3 +6,7 @@
     width: 33%;
     display: inline-block;
 }
+
+.modal-body {
+    text-align: center;
+}

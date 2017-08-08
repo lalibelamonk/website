@@ -2,50 +2,72 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Composition from '../composition/composition.js';
 import { Row, CardDeck } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './dashboard.css';
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
-        this.chunkCompositions = this.chunkCompositions.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.updateModalComp = this.updateModalComp.bind(this);
+        this.state = {
+            modalOpen: false,
+            modalComp: null
+        };
     }
 
-    chunkCompositions(comps, chunksize) {
-        let chunkedComps = [];
-        for(let i = 0; i < comps.length; i += chunksize) {
-            chunkedComps.push(comps.slice(i, i + chunksize));
+    toggleModal() {
+        this.setState({
+            modalOpen: !this.state.modalOpen
+        });
+    }
+
+    updateModalComp(composition) {
+        this.setState({
+            modalComp: composition,
+            modalOpen: true
+        });
+    }
+
+    getModalImage() {
+        if(this.state.modalComp) {
+            return this.state.modalComp.image;
+        } else {
+            return null;
         }
-        return chunkedComps;
+    }
+
+    getModalTitle() {
+        if(this.state.modalComp) {
+            return this.state.modalComp.name;
+        } else {
+            return null;
+        }        
     }
 
     render() {
-        let chunks = this.chunkCompositions(this.props.compositions, 3);
-        if(chunks.length > 0) {
-            // return (
-            //     <div>
-            //     {chunks.map((chunk, idx) => {
-            //         return (
-            //             <Row key={idx}>
-            //                 <CardDeck>
-            //                     {chunk.map((composition) => {
-            //                         return <Composition key={composition.name} composition={composition}></Composition>
-            //                     })}
-            //                 </CardDeck>
-            //             </Row>
-            //         );
-            //     })}
-            //     </div>
-            // );
-
-            let comps = this.props.compositions.map((composition) => {
-                            return <div className="comp-container">
-                                    <Composition key={composition.name} composition={composition}></Composition>
-                                    </div>
-                        });
-            return (<div>{comps}</div>);
-        } else {
-            return <div>No Compositions111</div>;
-        }
+        let comps = this.props.compositions.map((composition) => {
+                        let props = {
+                            composition: composition,
+                            updateModalComp: this.updateModalComp
+                        }
+                        return <div key={composition.name} className="comp-container">
+                                <Composition {...props}></Composition>
+                                </div>
+                    });
+        return (<div>
+                    {comps}
+                    <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal} className={this.props.className}>
+                        <ModalHeader toggle={this.toggle}>{this.getModalTitle()}</ModalHeader>
+                        <ModalBody>
+                            <img src={this.getModalImage()} />
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="success" onClick={this.toggle}>Buy Print</Button>{' '}
+                        </ModalFooter>
+                    </Modal>
+                </div>
+                );
     }
 }
 

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import compositionsReducer from './compositions';
+import compositions from './compositions';
 
 const rootReducer = combineReducers({
     routerReducer,
-    compositionsReducer
+    compositions
 });
 
 export default rootReducer;

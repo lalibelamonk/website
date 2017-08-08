@@ -1,0 +1,8 @@
+.card-deck {
+    width: 100%;
+}
+
+.comp-container {
+    width: 33%;
+    display: inline-block;
+}

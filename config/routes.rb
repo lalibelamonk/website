@@ -6,4 +6,5 @@ Rails.application.routes.draw do
      resources :compositions
     end
   end
+  post 'authenticate', to: 'authentication#authenticate'
 end

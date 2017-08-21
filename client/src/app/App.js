@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Route, Redirect } from 'react-router';
+import { Route } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import configureStore from '../store/store';
 import {routes} from '../routes/routes';

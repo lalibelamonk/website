@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Composition from '../composition/composition.js';
-import { Row, CardDeck } from 'reactstrap';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import './dashboard.css';
 
@@ -10,6 +9,7 @@ class Dashboard extends Component {
         super(props);
         this.toggleModal = this.toggleModal.bind(this);
         this.updateModalComp = this.updateModalComp.bind(this);
+        //this.buy = this.buy.bind(this);
         this.state = {
             modalOpen: false,
             modalComp: null
@@ -28,6 +28,10 @@ class Dashboard extends Component {
             modalOpen: true
         });
     }
+
+    // buy() {
+
+    // }
 
     getModalImage() {
         if(this.state.modalComp) {
@@ -60,7 +64,7 @@ class Dashboard extends Component {
                     <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>{this.getModalTitle()}</ModalHeader>
                         <ModalBody>
-                            <img src={this.getModalImage()} />
+                            <img src={this.getModalImage()} alt={this.getModalTitle()} />
                         </ModalBody>
                         <ModalFooter>
                             <Button color="success" onClick={this.toggle}>Buy Print</Button>{' '}

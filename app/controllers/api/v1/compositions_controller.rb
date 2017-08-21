@@ -1,7 +1,6 @@
 module Api::V1
   class CompositionsController < ApiController
     before_action :set_composition, only: [:show, :edit, :update, :destroy]
-    #http_basic_authenticate_with :name => "user", :password => "password", only: [:new, :create, :destroy]
 
     # GET /compositions
     # GET /compositions.json

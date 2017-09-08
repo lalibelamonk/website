@@ -1,4 +1,5 @@
 import {apiUrl} from '../config/config';
+import { setCurrentSession } from '../util/session';
 
 class sessionApi {
 
@@ -16,7 +17,6 @@ class sessionApi {
             if (response.status !== 200) {
                 throw new Error('Authenticate Failed');
             }
-            console.log(response);
             return response.json();
         }).catch(error => {
             throw error;

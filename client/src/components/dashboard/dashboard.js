@@ -67,7 +67,7 @@ class Dashboard extends Component {
                             <img src={this.getModalImage()} alt={this.getModalTitle()} />
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="success" onClick={this.toggle}>Buy Print</Button>{' '}
+                            <Button color="success" href={"/buy"}>Buy</Button>{' '}
                         </ModalFooter>
                     </Modal>
                 </div>

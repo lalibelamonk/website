@@ -2,52 +2,68 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FormGroup, Col, FormText, Input, Button } from 'reactstrap';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import Login from './login'
+import * as sessionUtils from '../../util/session';
 import * as sessionActions from '../../actions/sessionActions';
+import 'react-tabs/style/react-tabs.css';
 //import './checkout.css';
 
 class AdminDashboard extends Component {
     constructor(props) {
         super(props);
+        this.tabList = this.tabList.bind(this);
+        this.tabPanels = this.tabPanels.bind(this);
         this.logIn = this.logIn.bind(this);
-        this.onChange = this.onChange.bind(this);
-        this.state = {
-            loggedIn: false,
-            credentials: {}
+    }
+
+    logIn(credentials) {
+        var self = this;
+        this.props.actions.logIn(credentials).then(function() {
+            self.forceUpdate();
+        });
+    }
+
+    tabList() {
+        if(sessionUtils.isSessionActive()) {
+            return ['General', 'New Composition'];
+        } else {
+            return ['Login'];
         }
     }
 
-    logIn() {
-        this.props.actions.logIn(this.state.credentials);
-    }
-
-    onChange(event) {
-        const field = event.target.name;
-        const credentials = this.state.credentials;
-        credentials[field] = event.target.value;
-        return this.setState({credentials: credentials});
+    tabPanels() {
+        if(sessionUtils.isSessionActive()) {
+            return (
+                <div>
+                <TabPanel>
+                    <div>General</div>
+                </TabPanel>
+                <TabPanel>
+                    <div>New Composition</div>
+                </TabPanel>
+                </div>
+            )
+        } else {
+            return (
+                <TabPanel>
+                    <Login logIn={this.logIn}></Login>
+                </TabPanel>
+            )
+        }
     }
 
     render() {
         return (
-            <form className="login">
-                <FormGroup row className="no-gutters">
-                    <Col className="offset-4" sm={{ size: 4, offset: 4 }}>
-                        <Input ref="username" type="text" name="username" id="username" placeholder="..." onChange={this.onChange}/>
-                        <FormText>Username</FormText>
-                    </Col>
-                </FormGroup>
-                <FormGroup row className="no-gutters">
-                    <Col className="offset-4" sm={{ size: 4, offset: 4 }}>
-                        <Input ref="password" type="password" name="password" id="password" placeholder="..." onChange={this.onChange}/>
-                        <FormText>Password</FormText>
-                    </Col>
-                </FormGroup>
-                <FormGroup check row className="no-gutters">
-                    <Col sm={{ size: 4, offset: 4 }}>
-                        <Button onClick={this.logIn}>Log In</Button>
-                    </Col>
-                </FormGroup>
-            </form>
+            <Tabs>
+                <TabList>
+                    {this.tabList().map((tab) => {
+                        return (<Tab key={tab}>{tab}</Tab>);
+                    })}
+                </TabList>
+
+                {this.tabPanels()}
+            </Tabs>
         );
     }
 }
@@ -60,7 +76,6 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state, ownProps) {
     return {
-        session: state.session
     };
 }
 

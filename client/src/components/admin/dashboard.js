@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FormGroup, Col, FormText, Input, Button } from 'reactstrap';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Login from './login'
+import Login from './login';
+import CompositionList from './compositionList';
 import * as sessionUtils from '../../util/session';
 import * as sessionActions from '../../actions/sessionActions';
 import 'react-tabs/style/react-tabs.css';
@@ -37,7 +38,7 @@ class AdminDashboard extends Component {
             return (
                 <div>
                 <TabPanel>
-                    <div>General</div>
+                    <CompositionList></CompositionList>
                 </TabPanel>
                 <TabPanel>
                     <div>New Composition</div>

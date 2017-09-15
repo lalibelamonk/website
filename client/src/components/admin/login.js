@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { FormGroup, Col, FormText, Input, Button } from 'reactstrap';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import * as sessionUtils from '../../util/session';
-import 'react-tabs/style/react-tabs.css';
-//import './checkout.css';
 
 class Login extends Component {
     constructor(props) {

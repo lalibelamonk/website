@@ -7,6 +7,7 @@ import {routes} from '../routes/routes';
 import { history } from '../history/history';
 import { ConnectedRouter } from 'react-router-redux';
 import Header from '../components/header/header';
+import Menu from '../components/menu/menu';
 
 import './App.css';
 
@@ -25,6 +26,7 @@ const App = (props) => (
         <ConnectedRouter history={history}>
             <div className="App">
                 <Header />
+                <Menu />
                 <div className="main-container">
                     {routes.map((route, idx) => {
                         if(route.private) {

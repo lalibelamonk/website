@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as compositionsActions from '../../actions/compositionsActions';
+import * as FontAwesome from 'react-icons/lib/fa';
 import './header.css';
 
 class Header extends Component {
@@ -17,8 +18,18 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="header">
-                Print Witch
+            <div className="header-container">
+                <div className="name-header">
+                    El Hurst
+                </div>
+                <div className="header-buttons">
+                    <div className="header-icon search">
+                        <FontAwesome.FaSearch />
+                    </div>
+                    <div className="header-icon menu">
+                        <FontAwesome.FaBars />
+                    </div>
+                </div>
             </div>
         );
     }

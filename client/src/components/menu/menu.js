@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './menu.css';
 
 class Menu extends Component {
     constructor(props) {

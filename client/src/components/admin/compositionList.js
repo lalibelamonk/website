@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { FaTrashO } from 'react-icons/lib/fa';
 
+
 class CompositionList extends Component {
     constructor(props) {
         super(props);

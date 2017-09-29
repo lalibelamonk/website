@@ -8,7 +8,7 @@ import CompositionList from './compositionList';
 import * as sessionUtils from '../../util/session';
 import * as sessionActions from '../../actions/sessionActions';
 import 'react-tabs/style/react-tabs.css';
-//import './checkout.css';
+
 
 class AdminDashboard extends Component {
     constructor(props) {

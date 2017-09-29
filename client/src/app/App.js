@@ -9,8 +9,6 @@ import { ConnectedRouter } from 'react-router-redux';
 import Header from '../components/header/header';
 import Menu from '../components/menu/menu';
 
-import './App.css';
-
 
 const store = configureStore(history);
 

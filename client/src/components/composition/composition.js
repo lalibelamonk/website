@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardImg, CardText, CardBlock,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
-import './composition.css';
 
 class Composition extends Component {
     constructor(props) {

@@ -1,0 +1,19 @@
+@import './variables';
+@import '../components/composition/composition';
+@import '../components/header/header';
+@import '../components/dashboard/dashboard';
+@import '../components/menu/menu';
+
+.main-container {
+    position: relative;
+    width: 75%;
+    margin: auto;
+};
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+
+    .hidden {
+        display: none;
+   }
+};

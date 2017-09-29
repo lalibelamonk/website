@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Composition from '../composition/composition.js';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import './dashboard.css';
 
 class Dashboard extends Component {
     constructor(props) {

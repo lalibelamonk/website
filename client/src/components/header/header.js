@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as compositionsActions from '../../actions/compositionsActions';
 import * as FontAwesome from 'react-icons/lib/fa';
-import './header.css';
 
 class Header extends Component {
     constructor(props) {

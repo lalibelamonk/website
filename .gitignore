@@ -30,3 +30,4 @@ client/node_modules/
 database/*
 /database/**/*
 Gemfile.lock
+/**/*.DS_Store

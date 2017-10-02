@@ -4,11 +4,16 @@
 @import '../components/dashboard/dashboard';
 @import '../components/menu/menu';
 
+.App {
+    position: absolute;
+}
+
 .main-container {
     position: relative;
+    top: $header-height;
     width: 75%;
     margin: auto;
-};
+}
 
 body {
     font-family: 'Josefin Sans', sans-serif;
@@ -16,4 +21,4 @@ body {
     .hidden {
         display: none;
    }
-};
+}

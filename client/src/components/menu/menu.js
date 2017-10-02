@@ -7,8 +7,12 @@ class Menu extends Component {
     }
 
     render() {
+        let classes = "menu-container";
+        if (!this.props.menuOpen) {
+            classes += " hidden";
+        }
         return (
-            <div className="menu-container">
+            <div className={classes}>
                 <ul className="menu">
                     <li>Prints</li>
                     <li>Paintings</li>
@@ -21,4 +25,10 @@ class Menu extends Component {
     }
 }
 
-export default connect(null, null)(Menu);
+function mapStateToProps(state, ownProps) {
+    return {
+        menuOpen: state.menuOpen
+    };
+}
+
+export default connect(mapStateToProps, null)(Menu);

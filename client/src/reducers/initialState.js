@@ -1,3 +1,4 @@
 export default {
-    compositions: []
+    compositions: [],
+    menuOpen: false
 }

@@ -31,3 +31,6 @@ database/*
 /database/**/*
 Gemfile.lock
 /**/*.DS_Store
+
+# Ignore compiled css
+*.css

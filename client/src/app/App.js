@@ -26,12 +26,14 @@ const App = (props) => (
                 <Header />
                 <Menu />
                 <div className="main-container">
-                    {routes.map((route, idx) => {
-                        if(route.private) {
-                            return <PrivateRoute key={idx} {...route}/>
-                        }
-                        return <Route exact key={idx} {...route}/>
-                    })}
+                    <div className="centered">
+                        {routes.map((route, idx) => {
+                            if(route.private) {
+                                return <PrivateRoute key={idx} {...route}/>
+                            }
+                            return <Route exact key={idx} {...route}/>
+                        })}
+                    </div>
                 </div>
             </div>
         </ConnectedRouter>

@@ -1,12 +1,34 @@
-.card-deck {
-    width: 100%;
-}
-
-.comp-container {
-    width: 33%;
-    display: inline-block;
-}
-
 .modal-body {
     text-align: center;
+}
+
+.card {
+    display: block;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 640px) {  
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    margin-bottom: 15px;
+    display: flex;
+    flex: 0 1 calc(50% - 8px);
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .cards {
+    margin-top: inherit;
+  }
+  
+  .card {
+    margin-bottom: 32px;
+    display: flex;
+    flex: 0 1 calc(33% - 8px);
+  }
 }

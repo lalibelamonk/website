@@ -54,11 +54,9 @@ class Dashboard extends Component {
                             composition: composition,
                             updateModalComp: this.updateModalComp
                         }
-                        return <div key={composition.name} className="comp-container">
-                                <Composition {...props}></Composition>
-                                </div>
+                        return <Composition {...props}></Composition>
                     });
-        return (<div>
+        return (<section className="cards">
                     {comps}
                     <Modal isOpen={this.state.modalOpen} toggle={this.toggleModal} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>{this.getModalTitle()}</ModalHeader>
@@ -69,7 +67,7 @@ class Dashboard extends Component {
                             <Button color="success" href={"/buy"}>Buy</Button>{' '}
                         </ModalFooter>
                     </Modal>
-                </div>
+                </section>
                 );
     }
 }

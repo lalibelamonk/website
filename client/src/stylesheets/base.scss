@@ -5,14 +5,22 @@
 @import '../components/menu/menu';
 
 .App {
-    position: absolute;
 }
 
 .main-container {
     position: relative;
+    display: block;
     top: $header-height;
-    width: 75%;
-    margin: auto;
+
+    @media screen and (min-width: 832px) {
+        .centered {
+            max-width: 832px;
+        }
+    }
+
+    .centered {
+        margin: 0 auto;
+    }
 }
 
 body {

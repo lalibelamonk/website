@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as FontAwesome from 'react-icons/lib/fa';
+import * as headerActions from '../../actions/headerActions';
 
 class Menu extends Component {
     constructor(props) {
         super(props);
+        this.toggleMenu = this.toggleMenu.bind(this);
+    }
+
+    toggleMenu(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        this.props.actions.toggleMenu();
     }
 
     render() {
@@ -17,9 +27,9 @@ class Menu extends Component {
                     <li>Prints</li>
                     <li>Paintings</li>
                     <li>Illustrations</li>
-                    <br />
                     <li>Merch</li>
                 </ul>
+                <div className="modal" onClick={this.toggleMenu}></div>
             </div>
         );
     }
@@ -31,4 +41,10 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps, null)(Menu);
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(headerActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

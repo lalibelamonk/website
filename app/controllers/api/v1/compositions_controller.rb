@@ -1,16 +1,17 @@
 module Api::V1
   class CompositionsController < ApiController
     before_action :set_composition, only: [:show, :edit, :update, :destroy]
+    skip_before_action :authenticate_request, only: [:index, :show]
 
     # GET /compositions
     # GET /compositions.json
     def index
-      @compositions = []
+      @compositions = Composition.all
       # dummy data for now
-      (1..10).each do |num|
-        comp = Composition.new(:name => "test #{num}", :image => "http://samanthaannsportfolio.weebly.com/uploads/1/0/4/9/10497850/9222152_orig.jpg")
-        @compositions.push(comp)
-      end
+      #(1..10).each do |num|
+      #  comp = Composition.new(:name => "test #{num}", :image => "http://samanthaannsportfolio.weebly.com/uploads/1/0/4/9/10497850/9222152_orig.jpg")
+      #  @compositions.push(comp)
+      #end
     end
 
     # GET /compositions/1
@@ -30,17 +31,8 @@ module Api::V1
     # POST /compositions
     # POST /compositions.json
     def create
-      @composition = Composition.new(composition_params)
-
-      respond_to do |format|
-        if @composition.save
-          format.html { redirect_to @composition, notice: 'Composition was successfully created.' }
-          format.json { render :show, status: :created, location: @composition }
-        else
-          format.html { render :new }
-          format.json { render json: @composition.errors, status: :unprocessable_entity }
-        end
-      end
+      @composition = Composition.create(composition_params)
+      render 'show'
     end
 
     # PATCH/PUT /compositions/1

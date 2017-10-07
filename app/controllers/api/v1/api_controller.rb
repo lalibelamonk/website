@@ -1,5 +1,5 @@
 module Api::V1
-  class  ApiController < ActionController::API
+  class  ApiController < ApplicationController
     include ActionController::ImplicitRender
     include ActionView::Layouts
 

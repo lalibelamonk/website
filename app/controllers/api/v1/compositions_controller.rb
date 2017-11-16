@@ -7,11 +7,6 @@ module Api::V1
     # GET /compositions.json
     def index
       @compositions = Composition.all
-      # dummy data for now
-      #(1..10).each do |num|
-      #  comp = Composition.new(:name => "test #{num}", :image => "http://samanthaannsportfolio.weebly.com/uploads/1/0/4/9/10497850/9222152_orig.jpg")
-      #  @compositions.push(comp)
-      #end
     end
 
     # GET /compositions/1
@@ -38,14 +33,9 @@ module Api::V1
     # PATCH/PUT /compositions/1
     # PATCH/PUT /compositions/1.json
     def update
-      respond_to do |format|
-        if @composition.update(composition_params)
-          format.html { redirect_to @composition, notice: 'Composition was successfully updated.' }
-          format.json { render :show, status: :ok, location: @composition }
-        else
-          format.html { render :edit }
-          format.json { render json: @composition.errors, status: :unprocessable_entity }
-        end
+      if @composition.update(composition_params)
+        render 'show'
+      else
       end
     end
 

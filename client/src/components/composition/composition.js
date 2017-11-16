@@ -11,7 +11,7 @@ class Composition extends Component {
         e.preventDefault();
         this.props.updateModalComp(this.props.composition);
     }
-
+    
     render() {
         return (
             <div onClick={this.handleClick} className="card">

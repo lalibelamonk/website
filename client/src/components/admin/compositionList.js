@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FaTrashO } from 'react-icons/lib/fa';
+import * as compositionsActions from '../../actions/compositionsActions';
+import CompositionItem from './compositionItem';
 
 
 class CompositionList extends Component {
@@ -12,26 +13,15 @@ class CompositionList extends Component {
         return (
             <table>
                 <tbody>
-                {
-                    this.props.compositions.map((comp, idx) => {
+                    {this.props.compositions.map((comp, idx) => {
                         return (
-                            <tr>
-                                <td>{comp.name}</td>
-                                <td>{idx}</td>
-                                <FaTrashO />
-                            </tr>
+                            <CompositionItem comp={comp} key={idx}/>
                         );
-                    })
-                }
+                    })}
                 </tbody>
             </table>
         )
     }
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-    };
 }
 
 function mapStateToProps(state, ownProps) {
@@ -40,4 +30,4 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompositionList);
+export default connect(mapStateToProps, null)(CompositionList);

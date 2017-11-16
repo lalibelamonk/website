@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::API
     include ActionController::ImplicitRender
     include ActionView::Layouts
-    
     before_action :authenticate_request 
 
     attr_reader :current_user 

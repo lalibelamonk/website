@@ -5,6 +5,7 @@ import { FormGroup, Col, FormText, Input, Button } from 'reactstrap';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Login from './login';
 import CompositionList from './compositionList';
+import CompositionForm from './compositionForm';
 import * as sessionUtils from '../../util/session';
 import * as sessionActions from '../../actions/sessionActions';
 import 'react-tabs/style/react-tabs.css';
@@ -41,7 +42,7 @@ class AdminDashboard extends Component {
                     <CompositionList></CompositionList>
                 </TabPanel>
                 <TabPanel>
-                    <div>New Composition</div>
+                    <CompositionForm></CompositionForm>
                 </TabPanel>
                 </div>
             )

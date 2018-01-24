@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import EditableInput from '../util/editableInput';
+import BoundInput from '../util/boundInput';
 import { bindActionCreators } from 'redux';
 import { FaTrashO, FaLock, FaUnlock } from 'react-icons/lib/fa';
 import * as compositionsActions from '../../actions/compositionsActions';
@@ -38,10 +38,10 @@ class CompositionItem extends Component {
                     <FaUnlock hidden={!this.state.editable} />
                 </td>
                 <td>
-                    <EditableInput onSave={this.saveComposition} data={this.props.comp} dataKey='name'></EditableInput>
+                    <BoundInput data={this.props.comp.name}></BoundInput>
                 </td>
                 <td>
-                    <EditableInput onSave={this.saveComposition} data={this.props.comp} dataKey='image'></EditableInput>
+                    <BoundInput data={this.props.comp.image}></BoundInput>
                 </td>
                 <td><FaTrashO /></td>
             </tr>

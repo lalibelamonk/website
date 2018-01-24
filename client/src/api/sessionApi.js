@@ -14,9 +14,6 @@ class sessionApi {
 
 
         return fetch(request).then(response => {
-            if (response.status !== 200) {
-                throw new Error('Authenticate Failed');
-            }
             return response.json();
         }).catch(error => {
             throw error;

@@ -28,3 +28,13 @@ export function saveComposition(data) {
         });
     }
 }
+
+export function createComposition(data) {
+    return function(dispatch) {
+        return compositionsApi.createComposition(data).then(response => {
+            dispatch(saveCompositionSuccess(response));
+        }).catch(error => {
+            throw(error);
+        });
+    }
+}

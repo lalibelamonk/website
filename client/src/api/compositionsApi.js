@@ -43,6 +43,28 @@ class compositionsApi {
             throw error;
         });
     }
+
+    static createComposition(data) {
+        const id = data.id
+        const request = new Request(`${apiUrl}/compositions`, {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': `${getCurrentSession().auth_token}`
+            }),
+            body: `${JSON.stringify(data)}`
+        });
+
+
+        return fetch(request).then(response => {
+            if (response.status !== 200) {
+                throw new Error('Update Composition Failed');
+            }
+            return response.json();
+        }).catch(error => {
+            throw error;
+        });
+    }
 }
 
 export default compositionsApi;

@@ -1,24 +1,19 @@
 import React, { Component } from 'react';
 
-class EditableInput extends Component {
+class BoundInput extends Component {
     constructor(props) {
         super(props);
-        this.saveData = this.saveData.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.state = {
-            value: this.props.data[this.props.dataKey]
+            value: this.props.data
         };
     }
 
-    saveData(value) {
-        let newData = {}
-        newData[this.props.dataKey] = value;
-        this.props.onSave({...this.props.data, ...newData});
-    }
-
     handleBlur(e) {
-        this.saveData(e.target.value);
+        if(this.props.onSave) {
+            this.saveData(e.target.value);
+        }
     }
 
     handleChange(e) {
@@ -37,4 +32,4 @@ class EditableInput extends Component {
     }
 }
 
-export default EditableInput;
+export default BoundInput;

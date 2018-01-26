@@ -10,38 +10,40 @@ class CompositionItem extends Component {
     constructor(props) {
         super(props);
         this.saveComposition = this.saveComposition.bind(this);
-        this.toggleEditable = this.toggleEditable.bind(this);
+        this.updateField = this.updateField.bind(this);
         this.state = {
-            editable: false
+            editable: false,
+            composition: this.props.comp
         }
     }
 
-    toggleEditable() {
+    updateField(data) {
+        let newComp = {...this.state.composition, ...data}
         this.setState({
-            editable: !this.state.editable
+            composition: newComp
         });
+        //TODO don't do this automatically. Create a save/cancel button that appears when field is updated. 
+        this.saveComposition(newComp)
     }
 
     saveComposition(data) {
         try {
-            this.props.actions.saveComposition(data);
+            this.props.actions.saveComposition({composition: data});
         } catch (error) {
             alert('Failed to save composition');
         }
     }
 
     render() {
+        let nameData = {name: this.state.composition.name};
+        let imageData = {name: this.state.composition.image};
         return (
             <tr>
-                <td onClick={this.toggleEditable}>
-                    <FaLock hidden={this.state.editable}/>
-                    <FaUnlock hidden={!this.state.editable} />
+                <td>
+                    <BoundInput data={nameData} update={this.updateField}></BoundInput>
                 </td>
                 <td>
-                    <BoundInput data={this.props.comp.name}></BoundInput>
-                </td>
-                <td>
-                    <BoundInput data={this.props.comp.image}></BoundInput>
+                    <BoundInput data={imageData} update={this.updateField}></BoundInput>
                 </td>
                 <td><FaTrashO /></td>
             </tr>

@@ -23,8 +23,7 @@ class compositionsApi {
     }
 
     static updateComposition(data) {
-        const id = data.id
-        const request = new Request(`${apiUrl}/compositions/${id}`, {
+        const request = new Request(`${apiUrl}/compositions/${data.composition.id}`, {
             method: 'PUT',
             headers: new Headers({
                 'Content-Type': 'application/json',

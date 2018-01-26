@@ -3,31 +3,25 @@ import React, { Component } from 'react';
 class BoundInput extends Component {
     constructor(props) {
         super(props);
-        this.handleBlur = this.handleBlur.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.state = {
-            value: this.props.data
+            key: Object.keys(props.data)[0],
+            value: Object.values(props.data)[0]
         };
     }
 
-    handleBlur(e) {
-        if(this.props.onSave) {
-            this.saveData(e.target.value);
-        }
-    }
-
     handleChange(e) {
-        this.setState({value: e.target.value});
+        let data = {};
+        data[this.state.key] = e.target.value;
+        this.setState({
+            value: e.target.value
+        });
+        this.props.update(data);
     }
 
     render() {
-        let handlers = {
-            onBlur: this.handleBlur,
-            onChange: this.handleChange
-        }
         return (
-            <input value={this.state.value} {...handlers} >
-            </input>
+            <input value={this.state.value} onChange={this.handleChange} />
         )
     }
 }

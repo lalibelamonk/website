@@ -36,7 +36,7 @@ class Header extends Component {
         if(this.props.loggedIn && sessionUtils.isSessionActive() && navUtils.isAdminPage()) {
             return(
                 <div className="header-buttons">
-                    <a href="/" className="header-icon" onClick={this.handleLogOut}>
+                    <a href="/" className="header-icon plain-link" onClick={this.handleLogOut}>
                         <FontAwesome.FaSignOut />
                     </a>
                 </div>
@@ -59,7 +59,9 @@ class Header extends Component {
         return (
             <div className="header-container">
                 <div className="name-header">
-                    El Hurst
+                    <a href="/" className="plain-link">
+                        El Hurst
+                    </a>
                 </div>
                 {this.headerButtons()}
             </div>

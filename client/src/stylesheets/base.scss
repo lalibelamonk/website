@@ -28,5 +28,11 @@ body {
 
     .hidden {
         display: none;
-   }
+    }
+
+    .plain-link {
+        cursor: pointer;
+        text-decoration: none;
+        color: $base-font-color;
+    }
 }

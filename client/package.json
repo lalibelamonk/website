@@ -11,6 +11,7 @@
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.5.2",
     "react-addons-transition-group": "^15.5.2",
+    "react-confirm-alert": "^1.0.8",
     "react-dom": "^15.5.4",
     "react-icons": "^2.2.5",
     "react-redux": "^5.0.4",

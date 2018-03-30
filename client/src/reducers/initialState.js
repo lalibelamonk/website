@@ -1,4 +1,5 @@
 export default {
     compositions: [],
-    menuOpen: false
+    menuOpen: false,
+    loggedIn: false
 }

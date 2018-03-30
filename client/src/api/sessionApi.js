@@ -16,7 +16,7 @@ class sessionApi {
         return fetch(request).then(response => {
             return response.json();
         }).catch(error => {
-            throw error;
+            throw(error);
         });
     }
 }

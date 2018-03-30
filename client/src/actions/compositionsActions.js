@@ -1,11 +1,11 @@
 import * as types from './actionTypes';
 import compositionsApi from '../api/compositionsApi';
 
-export function getCompositionsSuccess(response) {
+function getCompositionsSuccess(response) {
     return {type: types.GET_COMPOSITIONS, next: [...response.compositions]};
 }
 
-export function saveCompositionSuccess(response) {
+function saveCompositionSuccess(response) {
     return {type: types.UPDATE_COMPOSITION, next: {...response}};
 }
 

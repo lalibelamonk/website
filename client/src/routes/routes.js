@@ -5,7 +5,7 @@ import AdminDashboard from '../components/admin/dashboard.js';
 
 export const routes = [
     {
-       path: '/',
+        path: '/',
         exact: true,
         private: false,
         component: Dashboard,

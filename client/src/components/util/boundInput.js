@@ -24,7 +24,7 @@ class BoundInput extends Component {
 
     render() {
         return (
-            <input value={this.getValue()} onChange={this.handleChange} />
+            <input {...this.props.inputProps} value={this.getValue()} onChange={this.handleChange} />
         )
     }
 }

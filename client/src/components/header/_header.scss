@@ -6,10 +6,30 @@
     padding: 7px;
     background-color: white;
     z-index: 10;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header-buttons {
-    float: right;
+    position: absolute;
+    right: 10px;
+    .header-search {
+        display: inline-block;
+        position: relative;
+        input {
+            transition: width .5s;
+            -webkit-transition: width .5s;
+            min-width: 0px;
+            width: 0%;
+            background: transparent;
+            &:focus {
+                outline: none;
+            }
+            &.displayed {
+                width: 100%
+            }
+        }
+    }
 }
 
 .name-header {
@@ -20,4 +40,14 @@
     font-size: 25px;
     display: inline-block;
     margin-left: 10px;
+}
+
+@keyframes slidein {
+    0% {
+        width: 0px;
+    }
+
+    100% {
+        width: 200px;
+    }
 }

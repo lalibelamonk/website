@@ -7,29 +7,16 @@ import * as headerActions from '../../actions/headerActions';
 class Menu extends Component {
     constructor(props) {
         super(props);
-        this.toggleMenu = this.toggleMenu.bind(this);
-    }
-
-    toggleMenu(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        this.props.actions.toggleMenu();
     }
 
     render() {
-        let classes = "menu-container";
-        if (!this.props.menuOpen) {
-            classes += " hidden";
-        }
         return (
-            <div className={classes}>
+            <div className="menu-container">
                 <ul className="menu">
-                    <li>Prints</li>
-                    <li>Paintings</li>
-                    <li>Illustrations</li>
-                    <li>Merch</li>
+                    <li className="menu-header">work</li>
+                    <li className="menu-header">info</li>
+                    <li className="menu-header">find me</li>
                 </ul>
-                <div className="modal" onClick={this.toggleMenu}></div>
             </div>
         );
     }

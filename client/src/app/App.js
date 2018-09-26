@@ -1,13 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Route } from 'react-router';
+import { Route, Redirect } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import configureStore from '../store/store';
 import {routes} from '../routes/routes';
 import { history } from '../history/history';
 import { ConnectedRouter } from 'react-router-redux';
 import Header from '../components/header/header';
-import Menu from '../components/menu/menu';
 
 
 const store = configureStore(history);
@@ -24,7 +23,6 @@ const App = (props) => (
         <ConnectedRouter history={history}>
             <div className="App">
                 <Header />
-                <Menu />
                 <div className="main-container">
                     <div className="centered">
                         {routes.map((route, idx) => {

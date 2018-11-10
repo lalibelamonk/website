@@ -5,6 +5,8 @@ export default function compositionsReducuer(state = initialState.compositions, 
     switch(action.type) {
         case types.GET_COMPOSITIONS:
             return [...action.next];
+        case types.DELETE_COMPOSITION:
+            return state.filter((el) => { return el.id !== action.next.id })
         default:
             return state;
     }

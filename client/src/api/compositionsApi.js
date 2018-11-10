@@ -75,10 +75,10 @@ class compositionsApi {
         });
 
         return fetch(request).then(response => {
-            if (response.status !== 200) {
+            if (response.status !== 204) {
                 throw new Error('Delete Composition Failed');
             }
-            return response.json();
+            return response;
         }).catch(error => {
             throw error;
         });

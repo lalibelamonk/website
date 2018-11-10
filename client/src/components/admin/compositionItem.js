@@ -55,7 +55,9 @@ class CompositionItem extends Component {
               message: 'Are you sure?',
               confirmLabel: 'Confirm',
               cancelLabel: 'Cancel',
-              onConfirm: () => this.props.actions.deleteComposition(this.state.composition)
+              onConfirm: () => {
+                this.props.actions.deleteComposition(this.state.composition);
+              }
         });
     }
 

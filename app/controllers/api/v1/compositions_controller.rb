@@ -44,10 +44,7 @@ module Api::V1
     # DELETE /compositions/1.json
     def destroy
       @composition.destroy
-      respond_to do |format|
-        format.html { redirect_to compositions_url, notice: 'Composition was successfully destroyed.' }
-        format.json { head :no_content }
-      end
+      head :no_content
     end
 
     private

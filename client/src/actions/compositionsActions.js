@@ -9,6 +9,10 @@ function saveCompositionSuccess(response) {
     return {type: types.UPDATE_COMPOSITION, next: {...response}};
 }
 
+function deleteCompositionSuccess(data) {
+    return {type: types.DELETE_COMPOSITION, next: {...data}};
+}
+
 export function getCompositions() {
     return function(dispatch) {
         return compositionsApi.getCompositions().then(response => {
@@ -42,7 +46,7 @@ export function createComposition(data) {
 export function deleteComposition(data) {
     return function(dispatch) {
         return compositionsApi.deleteComposition(data).then(response => {
-            console.log(response);
+            dispatch(deleteCompositionSuccess(data));
         }).catch(error => {
             throw(error);
         });

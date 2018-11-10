@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_26_004907) do
+ActiveRecord::Schema.define(version: 2018_10_13_152702) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -38,10 +38,16 @@ ActiveRecord::Schema.define(version: 2018_09_26_004907) do
     t.text "description"
     t.text "dimension"
     t.text "materials"
-    t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "media"
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "composition_id"
+    t.index ["composition_id"], name: "index_images_on_composition_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -51,4 +57,5 @@ ActiveRecord::Schema.define(version: 2018_09_26_004907) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "images", "compositions"
 end

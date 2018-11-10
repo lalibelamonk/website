@@ -9,18 +9,25 @@ class CompositionForm extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {name: "", image: ""};
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {name: "", description: "", dimension: "", materials: ""};
     }
 
-    handleChange(e) {
-        this.setState({value: e.target.value});
+    handleChange(evt) {
+        this.setState({ [evt.target.name]: evt.target.value })
     }
 
+    convertToJson(formData) {
+        console.log(formData);
+    }
 
     handleSubmit(event) {
         event.preventDefault();
         try {
-            this.props.actions.createComposition(this.state);
+            this.props.actions.createComposition({composition: this.state}).then(resp => {
+                this.setState({name: "", description: "", dimension: "", materials: ""});
+                alert("composition saved successfully");
+            });
         } catch (error) {
             alert('Failed to create composition');
         }
@@ -31,11 +38,19 @@ class CompositionForm extends Component {
             <form onSubmit={this.handleSubmit}>
                 <p>
                     <label>Name</label>
-                    <BoundInput data={this.state.name} onChange={this.handleChange}></BoundInput>
+                    <input name="name" type="text" value={this.state.name} onChange={this.handleChange} />
                 </p>
                 <p>
-                    <label>Image</label>
-                    <BoundInput data={this.state.image} onChange={this.handleChange}></BoundInput>
+                    <label>Description</label>
+                    <input name="description" type="text" value={this.state.description} onChange={this.handleChange} />
+                </p>
+                <p>
+                    <label>Materials</label>
+                    <input name="materials" type="text" onChange={this.handleChange} />
+                </p>
+                <p>
+                    <label>Dimension</label>
+                    <input name="dimension" type="text" onChange={this.handleChange} />
                 </p>
                 <input type="submit" value="Submit"></input>
             </form>
@@ -48,5 +63,33 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(compositionsActions, dispatch)
     };
 }
+
+/**
+<input
+                        name="image"
+                        type="file"
+                        disabled={false}
+                        multiple={false}
+                        accept="image/*"
+                        style={{
+                          width: 0.1,
+                          height: 0.1,
+                          opacity: 0,
+                          overflow: 'hidden',
+                          position: 'absolute',
+                          zIndex: -1
+                        }}
+                        id="image"
+                        onChange={e => {}}
+                        className=""/>
+
+                      <label
+                        disabled={false}
+                        className="btn btn-success"
+                        htmlFor="image">
+                        <span className="glyphicon glyphicon-cloud-upload" />
+                        'Upload Files'
+                      </label>
+                </p>**/
 
 export default connect(null, mapDispatchToProps)(CompositionForm);

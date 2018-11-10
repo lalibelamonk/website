@@ -44,7 +44,7 @@ class compositionsApi {
     }
 
     static createComposition(data) {
-        const id = data.id
+        const id = data.id;
         const request = new Request(`${apiUrl}/compositions`, {
             method: 'POST',
             headers: new Headers({
@@ -58,6 +58,25 @@ class compositionsApi {
         return fetch(request).then(response => {
             if (response.status !== 200) {
                 throw new Error('Update Composition Failed');
+            }
+            return response.json();
+        }).catch(error => {
+            throw error;
+        });
+    }
+
+    static deleteComposition(data) {
+        const request = new Request(`${apiUrl}/compositions/${data.id}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': `${getCurrentSession().auth_token}`
+            })
+        });
+
+        return fetch(request).then(response => {
+            if (response.status !== 200) {
+                throw new Error('Delete Composition Failed');
             }
             return response.json();
         }).catch(error => {

@@ -1,7 +1,7 @@
 module Api::V1
   class CompositionsController < ApiController
     before_action :set_composition, only: [:show, :edit, :update, :destroy]
-    skip_before_action :authenticate_request, only: [:index, :show]
+    skip_before_action :authenticate_request, only: [:index, :show, :create, :update]
 
     # GET /compositions
     # GET /compositions.json
@@ -26,6 +26,7 @@ module Api::V1
     # POST /compositions
     # POST /compositions.json
     def create
+      @image = Image.create()
       @composition = Composition.create(composition_params)
       render 'show'
     end
@@ -57,7 +58,7 @@ module Api::V1
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def composition_params
-        params.require(:composition).permit(:name, :description, :dimension, :materials, :image)
+        params.require(:composition).permit(:name, :description, :dimension, :materials)
       end
   end
 end

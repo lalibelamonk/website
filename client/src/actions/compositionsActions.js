@@ -38,3 +38,13 @@ export function createComposition(data) {
         });
     }
 }
+
+export function deleteComposition(data) {
+    return function(dispatch) {
+        return compositionsApi.deleteComposition(data).then(response => {
+            console.log(response);
+        }).catch(error => {
+            throw(error);
+        });
+    }
+}
